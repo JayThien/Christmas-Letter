@@ -375,6 +375,6 @@ body {
 .tree1 {
     height: 10%;
     width: 10%;
-    position: fixed;
+    position: absolute;
     top: 5%;
 }
