@@ -1,48 +1,55 @@
 $(document).ready(function () {
-  const envelope = $('#envelope');
-  const openBtn = $("#openBtn");
-  const resetBtn = $("#resetBtn");
+    const envelope = $('#envelope');
+    const openBtn = $("#openBtn");
+    const resetBtn = $("#resetBtn");
+    const continueBtn = $("#continueBtn");
 
-  let currentPage = 1;
-  const totalPages = 23;
-  let isOpen = false;
+    let currentPage = 1;
+    const totalPages = 21;
+    let isOpen = false;
 
-  envelope.on('click', function () {
-    if (currentPage === 0) return;
-      if (isOpen) nextLyric();
-  });
+    openBtn.on('click', function () {
+        envelope.removeClass("close").addClass("open");
+        isOpen = true;
+        openBtn.hide();
+        continueBtn.show();
+    });
 
-  openBtn.on('click', function () {
-      envelope.removeClass("close").addClass("open");
-      isOpen = true;
-      openBtn.hide();
-      resetBtn.show();
-  });
+    continueBtn.on('click', function () {
+        if (currentPage === 0) return;
+        if (isOpen) nextLyric();
+    });
 
-  resetBtn.on('click', function () {
-      envelope.removeClass("open").addClass("close");
-      isOpen = false;
-      setTimeout(function () {
-          currentPage = 1;
-          updateActivePage();
-          resetBtn.hide();
-          openBtn.show();
-      }, 600);
-  });
+    resetBtn.on('click', function () {
+        envelope.removeClass("open").addClass("close");
+        isOpen = false;
+        setTimeout(function () {
+            currentPage = 1;
+            updateActivePage();
+            resetBtn.hide();
+            openBtn.show();
+        }, 600);
+    });
 
-  function nextLyric() {
-      currentPage = currentPage < totalPages ? currentPage + 1 : 0;
-      updateActivePage();
-  }
+    function nextLyric() {
+        currentPage = currentPage < totalPages ? currentPage + 1 : 0;
+        updateActivePage();
+    }
 
-  function updateActivePage() {
-      $(".lyric-page").removeClass("active");
-      $("#page" + currentPage).addClass("active");
-  }
+    function updateActivePage() {
+        $(".lyric-page").removeClass("active");
+        $("#page" + currentPage).addClass("active");
+        if (currentPage === 0) {
+            continueBtn.hide();
+            resetBtn.show();
+            return;
+        };
+    }
 });
 
 const openBtn = document.getElementById("openBtn");
 const resetBtn = document.getElementById("resetBtn");
+const continueBtn = document.getElementById("continueBtn");
 const envelope = document.getElementById("envelope");
 const audio = document.getElementById("sound");
 
@@ -63,7 +70,7 @@ openBtn.addEventListener("click", function () {
     envelope.classList.remove("close");
     envelope.classList.add("open");
     openBtn.style.display = "none";
-    resetBtn.style.display = "inline-block";
+    continueBtn.style.display = "inline-block";
     playAudioOnce();
 });
 
@@ -101,8 +108,8 @@ function createSnowflake() {
 
     // Vị trí và tốc độ rơi ngẫu nhiên
     snow.style.left = Math.random() * 100 + "vw";
-    snow.style.animationDuration = 5 + Math.random() * 5 + "s"; 
-    snow.style.fontSize = (10 + Math.random() * 15) + "px"; 
+    snow.style.animationDuration = 5 + Math.random() * 5 + "s";
+    snow.style.fontSize = (10 + Math.random() * 15) + "px";
 
     document.body.appendChild(snow);
 
