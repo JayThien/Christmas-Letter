@@ -348,7 +348,7 @@ body {
     100% { transform: translateY(100vh) rotate(360deg); opacity: 0.2; }
 }
 .santa {
-  position: fixed;
+  position: absolute;
   bottom: 5%;       
   right: -400px;     
   width: 400px;       
@@ -358,7 +358,7 @@ body {
 
 @media (max-width: 768px) {
   .santa {
-    top: 50%;   /* thay đổi theo ý bạn */
+    top: 70%;   /* thay đổi theo ý bạn */
     width: 250px;  /* optional: cho vừa màn điện thoại */
     right: -250px; /* optional: chỉnh theo width */
   }
@@ -373,9 +373,8 @@ body {
   }
 }
 .tree1 {
-    height: 100%;
-    width: 50%;
+    height: 10%;
+    width: 10%;
     position: fixed;
-    left: -10%;
-    top: 8%;
+    top: 5%;
 }
