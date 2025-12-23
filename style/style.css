@@ -372,9 +372,3 @@ body {
     transform: translateX(-150vw); /* Bay ra khỏi mép trái */
   }
 }
-.tree1 {
-    height: 10%;
-    width: 10%;
-    position: absolute;
-    top: 5%;
-}

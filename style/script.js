@@ -5,7 +5,7 @@ $(document).ready(function () {
     const continueBtn = $("#continueBtn");
 
     let currentPage = 1;
-    const totalPages = 21;
+    const totalPages = 22;
     let isOpen = false;
 
     openBtn.on('click', function () {
