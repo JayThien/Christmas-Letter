@@ -348,8 +348,8 @@ body {
     100% { transform: translateY(100vh) rotate(360deg); opacity: 0.2; }
 }
 .santa {
-  position: absolute;
-  bottom: 5%;       
+  position: fixed;
+  bottom: -5%;       
   right: -400px;     
   width: 400px;       
   animation: flySanta 12s linear infinite;
