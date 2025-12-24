@@ -2,22 +2,20 @@ $(document).ready(function () {
     const envelope = $('#envelope');
     const openBtn = $("#openBtn");
     const resetBtn = $("#resetBtn");
-    const continueBtn = $("#continueBtn");
 
     let currentPage = 1;
     const totalPages = 24;
     let isOpen = false;
 
+    envelope.on('click', function () {
+        if (currentPage === 0) return;
+        if (isOpen) nextLyric();
+    });
+
     openBtn.on('click', function () {
         envelope.removeClass("close").addClass("open");
         isOpen = true;
         openBtn.hide();
-        continueBtn.show();
-    });
-
-    continueBtn.on('click', function () {
-        if (currentPage === 0) return;
-        if (isOpen) nextLyric();
     });
 
     resetBtn.on('click', function () {
@@ -40,7 +38,6 @@ $(document).ready(function () {
         $(".lyric-page").removeClass("active");
         $("#page" + currentPage).addClass("active");
         if (currentPage === 0) {
-            continueBtn.hide();
             resetBtn.show();
             return;
         };
@@ -49,14 +46,13 @@ $(document).ready(function () {
 
 const openBtn = document.getElementById("openBtn");
 const resetBtn = document.getElementById("resetBtn");
-const continueBtn = document.getElementById("continueBtn");
 const envelope = document.getElementById("envelope");
 const audio = document.getElementById("sound");
 
 let hasPlayed = false;
 
 function playAudioOnce() {
-    audio.currentTime = 21;
+    audio.currentTime = 24;
     if (!hasPlayed) {
         audio.play().then(() => {
             hasPlayed = true;
@@ -70,7 +66,6 @@ openBtn.addEventListener("click", function () {
     envelope.classList.remove("close");
     envelope.classList.add("open");
     openBtn.style.display = "none";
-    continueBtn.style.display = "inline-block";
     playAudioOnce();
 });
 
